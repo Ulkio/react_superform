@@ -12,7 +12,8 @@ function Form() {
   //   const [password, setPassword] = useState("");
   //   const [age, setAge] = useState("");
   //   const [address, setAddress] = useState("");
-  //
+
+  //   1 state pour tous les inputs
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -54,6 +55,16 @@ function Form() {
     console.log(inputs);
     setIsValid(true);
 
+    if (
+      inputs.email === "" ||
+      inputs.password === "" ||
+      inputs.age === "" ||
+      inputs.address === ""
+    ) {
+      setErr("Les champs doivent être remplis");
+      setIsValid(false);
+      return;
+    }
     if (!validEmail.test(inputs.email)) {
       setErr("Email incorrect");
       setIsValid(false);
@@ -88,6 +99,7 @@ function Form() {
           onChange={(e) => onChangeInput(e.target)}
           name="email"
           type="text"
+          required
         />
 
         <label htmlFor="password">Mot de passe</label>
@@ -95,6 +107,7 @@ function Form() {
           onChange={(e) => onChangeInput(e.target)}
           name="password"
           type="password"
+          required
         />
 
         <label htmlFor="age">Age</label>
@@ -102,6 +115,7 @@ function Form() {
           onChange={(e) => onChangeInput(e.target)}
           name="age"
           type="text"
+          required
         />
 
         <label htmlFor="address">Adresse</label>
@@ -109,6 +123,7 @@ function Form() {
           onChange={(e) => onChangeInput(e.target)}
           name="address"
           type="text"
+          required
         />
 
         <button onClick={(e) => validateInputField(e)}>Valider</button>
