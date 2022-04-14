@@ -61,7 +61,7 @@ function Form() {
       inputs.age === "" ||
       inputs.address === ""
     ) {
-      setErr("Les champs doivent être remplis");
+      setErr("Tous les champs doivent être remplis");
       setIsValid(false);
       return;
     }
@@ -103,12 +103,17 @@ function Form() {
         />
 
         <label htmlFor="password">Mot de passe</label>
+
         <input
           onChange={(e) => onChangeInput(e.target)}
           name="password"
           type="password"
           required
         />
+        <span style={{ fontSize: "0.8em" }}>
+          Au moins une majuscule, un chiffre, un caractère spécial, minimum 8
+          caractères
+        </span>
 
         <label htmlFor="age">Age</label>
         <input
